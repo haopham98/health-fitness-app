@@ -1,0 +1,30 @@
+<!-- templates/register.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Đăng ký</h1>
+    <form method="POST" action="{{ url_for('register') }}">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="number" name="height" placeholder="Chiều cao (cm)" required><br>
+        <input type="number" name="weight" placeholder="Cân nặng (kg)" required><br>
+        <input type="number" name="age" placeholder="Tuổi" required><br>
+        <select name="gender" required>
+            <option value="male">Nam</option>
+            <option value="female">Nữ</option>
+        </select><br>
+        <select name="activity_level" required>
+            <option value="sedentary">Ít vận động</option>
+            <option value="lightly active">Nhẹ</option>
+            <option value="moderately active">Trung bình</option>
+            <option value="very active">Cao</option>
+        </select><br>
+        <button type="submit">Đăng ký</button>
+    </form>
+</body>
+</html>
