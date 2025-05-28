@@ -2,11 +2,20 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+# ensure the .env file is in the same directory as this script
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+if not os.path.exists(dotenv_path):
+    print(f"Error: .env file not found at {dotenv_path}")
+else:
+    print(f"Loading .env from {dotenv_path}")
 
+load_dotenv(dotenv_path)
+
+print("MYSQL_HOST:", os.getenv('MYSQL_HOST'))  # Debug
 
 def get_db_connection():
     """Establish a connection to the MySQL database."""
+    load_dotenv()
     try:
         connection = mysql.connector.connect(
             host=os.getenv('MYSQL_HOST'),
@@ -14,6 +23,7 @@ def get_db_connection():
             password=os.getenv('MYSQL_PASSWORD'),
             database=os.getenv('MYSQL_DATABASE')
         )
+        print("Database connection established.")
         return connection
     except mysql.connector.Error as err:
         print(f"Error: {err}")

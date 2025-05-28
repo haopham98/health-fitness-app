@@ -9,6 +9,7 @@ app.secret_key = "super_secret_key"
 
 @app.route('/')
 def home():
+    conn = database.get_db_connection()
     return 'Hello, from Flask!'
 
 
